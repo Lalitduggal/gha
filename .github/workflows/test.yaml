@@ -22,12 +22,11 @@ jobs:
           pwd
           ls -lrta
           tree .
-          
-        
-    # - name: Upload a Build Artifact
-    #   uses: actions/upload-artifact@v4.4.3
-    #   with:
-    #     name: my-test-artifact
-    #     path: ./README.md
+                  
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.4.3
+        with:
+          name: my-test-artifact
+          path: ./README.md
 
           
