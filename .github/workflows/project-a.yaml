@@ -87,6 +87,15 @@ jobs:
           ls -R
           cat ./before.txt | sort > ./before_sorted.txt
           cat ./after.txt | sort > ./after_sorted.txt
-          
-          comm ./before_sorted.txt ./after_sorted.txt
-      
+
+          echo "Only before"
+          comm -23 ./before_sorted.txt ./after_sorted.txt
+
+          echo "Only after"
+          comm -13 ./before_sorted.txt ./after_sorted.txt
+
+          echo "both before and after"
+          comm -12 ./before_sorted.txt ./after_sorted.txt
+
+          echo "diff before and after"
+          diff -y ./before_sorted.txt ./after_sorted.txt
