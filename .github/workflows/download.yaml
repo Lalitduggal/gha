@@ -27,7 +27,7 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4
         with:
-          name: my-test-artifact
+          path: my-test-artifact
 
       - name: Print dir and files
         run: |
