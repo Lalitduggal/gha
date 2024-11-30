@@ -100,7 +100,7 @@ jobs:
           cat ./new_before_sorted.txt
           
           echo "new after sorted"
-          ./new_after_sorted.txt
+          cat ./new_after_sorted.txt
 
           echo "Only before"
           comm -23 ./before_sorted.txt ./after_sorted.txt
