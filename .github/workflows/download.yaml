@@ -3,11 +3,11 @@ name: Download artifact job
 on:
   workflow_dispatch:
     inputs:
-      your-name:
-        description: Log level
+      build-job-run-id:
+        description: Build artifact job run id
         required: true
         type: string
-        default: lalit
+        default: 12094908350
 
 jobs:
   test:
@@ -28,9 +28,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: my-test-artifact
-          # github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
-          repository: Lalitduggal/gha
-          run-id: 1
+          path: my-test-artifact
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ inputs.build-job-run-id }}
 
       - name: Print dir and files
         run: |
