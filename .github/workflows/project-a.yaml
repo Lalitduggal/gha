@@ -29,7 +29,7 @@ on:
 jobs:
   stop:
     runs-on: ubuntu-latest
-    environment: stop
+    # environment: stop
     steps:
       - name: before file creation
         run: |
@@ -48,7 +48,7 @@ jobs:
   start:
     runs-on: ubuntu-latest
     needs: stop
-    environment: start
+    # environment: start
     steps:
       - name: after file creation
         run: |
