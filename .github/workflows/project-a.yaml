@@ -56,6 +56,7 @@ jobs:
           cat > after.txt <<EOF
           praveen
           kumar
+          savita
           duggal
           vansh
           EOF
@@ -101,4 +102,7 @@ jobs:
 
           echo "diff before and after"
           diff -y ./before_sorted.txt ./after_sorted.txt
+
+          echo "diff before and after"
+          diff ./before_sorted.txt ./after_sorted.txt
           exit 0
