@@ -1,4 +1,4 @@
-name: Test job
+name: Upload job
 
 on:
   workflow_dispatch:
