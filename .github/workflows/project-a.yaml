@@ -27,46 +27,46 @@ on:
         type: boolean
         default: false
 jobs:
-  stop:
-    runs-on: ubuntu-latest
-    # environment: stop
-    steps:
-      - name: before file creation
-        run: |
-          cat > before.txt <<EOF
-          lalit
-          kumar
-          duggal
-          EOF
+  # stop:
+  #   runs-on: ubuntu-latest
+  #   # environment: stop
+  #   steps:
+  #     - name: before file creation
+  #       run: |
+  #         cat > before.txt <<EOF
+  #         lalit
+  #         kumar
+  #         duggal
+  #         EOF
                   
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-test-before-artifact
-          path: ./before.txt
+  #     - name: Upload a Build Artifact
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: my-test-before-artifact
+  #         path: ./before.txt
           
-  start:
-    runs-on: ubuntu-latest
-    needs: stop
-    # environment: start
-    steps:
-      - name: after file creation
-        run: |
-          cat > after.txt <<EOF
-          praveen
-          kumar
-          duggal
-          EOF
+  # start:
+  #   runs-on: ubuntu-latest
+  #   needs: stop
+  #   # environment: start
+  #   steps:
+  #     - name: after file creation
+  #       run: |
+  #         cat > after.txt <<EOF
+  #         praveen
+  #         kumar
+  #         duggal
+  #         EOF
 
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-test-after-artifact
-          path: ./after.txt
+  #     - name: Upload a Build Artifact
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: my-test-after-artifact
+  #         path: ./after.txt
 
   report:
     runs-on: ubuntu-latest
-    needs: start
+    # needs: start
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -83,6 +83,10 @@ jobs:
 
       - name: compare files
         run: |
+          pwd
           ls -R
-          comm ./before.txt ./after.txt
+          cat ./before.txt | sort > ./before_sorted.txt
+          cat ./after.txt | sort > ./after_sorted.txt
+          
+          comm ./before_sorted.txt ./after_sorted.txt
       
