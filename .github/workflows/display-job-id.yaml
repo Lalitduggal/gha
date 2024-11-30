@@ -1,0 +1,14 @@
+name: Display job id
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display job id
+        run: |
+          echo ${{ github.job_id }}
+          echo ${{ github.job }}
+          echo ${{ github.job_name }}
