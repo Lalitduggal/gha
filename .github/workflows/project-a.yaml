@@ -34,10 +34,9 @@ jobs:
       - name: before file creation
         run: |
           cat > before.txt <<EOF
-          lalit
-          kumar
-          duggal
-          savita
+          lalit duggal
+          praveen duggal
+          savita duggal
           EOF
                   
       - name: Upload a Build Artifact
@@ -54,11 +53,11 @@ jobs:
       - name: after file creation
         run: |
           cat > after.txt <<EOF
-          praveen
-          kumar
-          savita
-          duggal
-          vansh
+          vansh duggal
+          darsh duggal
+          savita mehta
+          lalit kumar
+          praveen duggal
           EOF
 
       - name: Upload a Build Artifact
@@ -101,7 +100,7 @@ jobs:
           comm -12 ./before_sorted.txt ./after_sorted.txt
 
           echo "diff before and after"
-          diff -y ./before_sorted.txt ./after_sorted.txt 2>/dev/null
+          diff -y ./before_sorted.txt ./after_sorted.txt && echo "no difference" || echo "difference"
 
           echo "diff before and after"
-          diff ./before_sorted.txt ./after_sorted.txt 2>/dev/null
+          diff ./before_sorted.txt ./after_sorted.txt && echo "no difference" || echo "difference"
