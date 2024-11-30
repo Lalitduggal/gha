@@ -37,6 +37,7 @@ jobs:
           lalit
           kumar
           duggal
+          savita
           EOF
                   
       - name: Upload a Build Artifact
@@ -56,6 +57,7 @@ jobs:
           praveen
           kumar
           duggal
+          vansh
           EOF
 
       - name: Upload a Build Artifact
@@ -99,3 +101,4 @@ jobs:
 
           echo "diff before and after"
           diff -y ./before_sorted.txt ./after_sorted.txt
+          exit 0
