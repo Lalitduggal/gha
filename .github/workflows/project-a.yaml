@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: before file creation
         run: |
-          cat < before.txt <<EOF
+          cat > before.txt <<EOF
           lalit
           kumar
           duggal
@@ -52,7 +52,7 @@ jobs:
     steps:
       - name: after file creation
         run: |
-          cat < after.txt <<EOF
+          cat > after.txt <<EOF
           praveen
           kumar
           duggal
