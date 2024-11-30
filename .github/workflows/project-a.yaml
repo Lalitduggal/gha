@@ -83,5 +83,6 @@ jobs:
 
       - name: compare files
         run: |
-          comm ./my-test-before-artifact/before.txt ./my-test-after-artifact/after.txt
+          ls -R
+          comm ./before.txt ./after.txt
       
