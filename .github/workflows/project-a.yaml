@@ -93,8 +93,11 @@ jobs:
           cat ./before.txt | sort > ./before_sorted.txt
           cat ./after.txt | sort > ./after_sorted.txt
 
-          cat ./before_sorted.txt | cut -d "-" -f1 > ./new_before_sorted.txt
-          cat ./after_sorted.txt | cut -d "-" -f1 > ./new_after_sorted.txt
+          # cat ./before_sorted.txt | cut -d "-" -f1 > ./new_before_sorted.txt
+          # cat ./after_sorted.txt | cut -d "-" -f1 > ./new_after_sorted.txt
+
+          cat ./before_sorted.txt | cut -d "-" -f1,3 > ./new_before_sorted.txt
+          cat ./after_sorted.txt | cut -d "-" -f1,3 > ./new_after_sorted.txt
 
           echo "new before sorted"
           cat ./new_before_sorted.txt
@@ -118,4 +121,6 @@ jobs:
           diff ./before_sorted.txt ./after_sorted.txt && echo "no difference" || echo "difference"
 
           echo "diff NEW before and after"
+          diff -y ./new_before_sorted.txt ./new_after_sorted.txt && echo "no difference" || echo "difference" 
+          
           diff -y ./new_before_sorted.txt ./new_after_sorted.txt && echo "no difference" || echo "difference"
