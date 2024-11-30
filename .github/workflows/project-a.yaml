@@ -34,9 +34,11 @@ jobs:
       - name: before file creation
         run: |
           cat > before.txt <<EOF
-          lalit duggal
-          praveen duggal
-          savita duggal
+          lalit-abc-12 running
+          praveen-def-34 running
+          savita-ghi-56 pending
+          darsh-jkl-78 running
+          vansh-mno-90 completed
           EOF
                   
       - name: Upload a Build Artifact
@@ -53,11 +55,12 @@ jobs:
       - name: after file creation
         run: |
           cat > after.txt <<EOF
-          vansh duggal
-          darsh duggal
-          savita mehta
-          lalit kumar
-          praveen duggal
+          lalit-abc-12 crashloop
+          praveen-def-34 running
+          savita-ghi-56 success
+          darsh-jkl-78 great
+          vansh-mno-90 completed
+          meghana-pqr-12 success
           EOF
 
       - name: Upload a Build Artifact
@@ -90,6 +93,15 @@ jobs:
           cat ./before.txt | sort > ./before_sorted.txt
           cat ./after.txt | sort > ./after_sorted.txt
 
+          cat ./before_sorted.txt | cut -d "-" -f1 > ./new_before_sorted.txt
+          cat ./after_sorted.txt | cut -d "-" -f1 > ./new_after_sorted.txt
+
+          echo "new before sorted"
+          cat ./new_before_sorted.txt
+          
+          echo "new after sorted"
+          ./new_after_sorted.txt
+
           echo "Only before"
           comm -23 ./before_sorted.txt ./after_sorted.txt
 
@@ -104,3 +116,6 @@ jobs:
 
           echo "diff before and after"
           diff ./before_sorted.txt ./after_sorted.txt && echo "no difference" || echo "difference"
+
+          echo "diff NEW before and after"
+          diff -y ./new_before_sorted.txt ./new_after_sorted.txt && echo "no difference" || echo "difference"
