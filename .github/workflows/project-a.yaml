@@ -125,7 +125,7 @@ jobs:
           
           diff -y ./new_before_sorted.txt ./new_after_sorted.txt && echo "no difference" || echo "difference"
 
-          echo "last diff"
+          echo "##### last diff"
           sed -e "s/-/ /g" < before_sorted.txt | awk '{print $1, $4}' > last_before.txt
           sed -e "s/-/ /g" < after_sorted.txt | awk '{print $1, $4}' > last_after.txt
-          diff -y last_before.txt last_after.txt
+          diff -y last_before.txt last_after.txt && echo "no difference" || echo "difference"
