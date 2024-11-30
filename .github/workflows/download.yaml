@@ -25,7 +25,7 @@ jobs:
           tree .
                   
       - name: Download a Build Artifact
-        uses: actions/download-artifact@v4.4.3
+        uses: actions/download-artifact@v4
         with:
           name: my-test-artifact
 
