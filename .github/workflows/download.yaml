@@ -27,7 +27,10 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4
         with:
-          path: my-test-artifact
+          name: my-test-artifact
+          # github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
+          # repository: Lalitduggal/gha
+          run-id: 1
 
       - name: Print dir and files
         run: |
