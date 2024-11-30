@@ -101,8 +101,7 @@ jobs:
           comm -12 ./before_sorted.txt ./after_sorted.txt
 
           echo "diff before and after"
-          diff -y ./before_sorted.txt ./after_sorted.txt
+          diff -y ./before_sorted.txt ./after_sorted.txt 2>/dev/null
 
           echo "diff before and after"
-          diff ./before_sorted.txt ./after_sorted.txt
-          exit 0
+          diff ./before_sorted.txt ./after_sorted.txt 2>/dev/null
