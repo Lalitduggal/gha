@@ -1,0 +1,87 @@
+name: Project a
+
+on:
+  workflow_dispatch:
+    inputs:
+      project-a-1:
+        description: project-a-1
+        required: true
+        type: boolean
+        default: false
+
+      project-a-2:
+        description: project-a-2
+        required: true
+        type: boolean
+        default: false
+
+      project-a-3:
+        description: project-a-3
+        required: true
+        type: boolean
+        default: false
+
+      project-a-4:
+        description: project-a-4
+        required: true
+        type: boolean
+        default: false
+jobs:
+  stop:
+    runs-on: ubuntu-latest
+    environment: stop
+    steps:
+      - name: before file creation
+        run: |
+          cat < before.txt <<EOF
+          lalit
+          kumar
+          duggal
+          EOF
+                  
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-test-before-artifact
+          path: ./before.txt
+          
+  start:
+    runs-on: ubuntu-latest
+    needs: stop
+    environment: start
+    steps:
+      - name: after file creation
+        run: |
+          cat < after.txt <<EOF
+          praveen
+          kumar
+          duggal
+          EOF
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-test-after-artifact
+          path: ./after.txt
+
+  report:
+    runs-on: ubuntu-latest
+    needs: start
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download a Before Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-test-before-artifact
+
+      - name: Download a After Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-test-after-artifact
+
+      - name: compare files
+        run: |
+          comm ./my-test-before-artifact/before.txt ./my-test-after-artifact/after.txt
+      
