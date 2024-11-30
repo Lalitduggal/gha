@@ -1,0 +1,25 @@
+name: Test job
+
+on:
+  workflow_dispatch:
+    inputs:
+      your-name:
+        description: Log level
+        required: true
+        type: string
+        default: lalit
+
+job:
+  test:
+  runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    # - name: Upload a Build Artifact
+    #   uses: actions/upload-artifact@v4.4.3
+    #   with:
+    #     name: my-test-artifact
+    #     path: ./README.md
+
+          
